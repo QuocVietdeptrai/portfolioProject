@@ -1,0 +1,31 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title #{title}
+    link(href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet")
+    link(rel="stylesheet" href="/css/mediaplayer.css")
+  block head 
+  body
+    header
+      .logo PortfolioCuaViet
+      nav
+        ul
+          li
+            a(href="/", class=(title === 'Home' ? 'active' : '')) Home
+          li
+            a(href="/about", class=(title === 'About' ? 'active' : '')) About
+          li
+            a(href="/portfolio", class=(title === 'Portfolio' ? 'active' : '')) Portfolio
+          li
+            a(href="/contact", class=(title === 'Contact' ? 'active' : '')) Contact
+      .github-icon
+        a(href="https://github.com/QuocVietdeptrai?tab=repositories" target="_blank")
+          img(src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub")
+      .menu-toggle
+        span
+        span
+        span
+    block content
+    script(src="/js/action.js")

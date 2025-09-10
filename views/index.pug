@@ -1,0 +1,106 @@
+extends layouts/layout
+
+block head
+  script(src="/js/scripts.js")
+  style.
+    .hero {
+      flex: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 40px 60px;
+      max-width: 1200px;
+      margin: 0 auto;
+      gap: 50px;
+    }
+
+    .hero-text {
+      flex: 1;
+      margin-right: 100px;
+    }
+
+    .hero-text h3 {
+      font-size: 1rem;
+      color: #FFD700;
+      margin-bottom: 10px;
+    }
+
+    .hero-text h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      white-space: nowrap;
+    }
+
+    .hero-text h2 {
+      font-size: 1.5rem;
+      color: #ccc;
+      margin-bottom: 20px;
+      min-height: 35px;
+    }
+
+    .hero-text h2 span {
+      color: #FFD700;
+      font-weight: 600;
+      border-right: 2px solid #FFD700;
+      padding-right: 5px;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .hero-text p {
+      font-size: 1rem;
+      color: #aaa;
+      line-height: 1.6;
+    }
+
+    .hero-image {
+      position: relative;
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-image img {
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      border: 4px solid #FFD700;
+      box-shadow: 0 0 40px rgba(255, 215, 0, 0.5);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      margin-left: 50px;
+    }
+
+    .hero-image img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 60px rgba(255, 215, 0, 0.8);
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero-text h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero-image img {
+        width: 220px;
+        height: 220px;
+        margin-right : 100px;
+      }
+    }
+
+block content
+  section.hero
+    .hero-text
+      h3 Hello World, I'm
+      h1 Nguyễn Quốc Việt
+      h2
+        span#typing-text
+      p Welcome to my personal website. 👋🏻
+    .hero-image
+      img(src="/images/blogcanhan.jpg" alt="Profile")

@@ -1,0 +1,299 @@
+extends layouts/layout
+
+block head
+  link(href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet")
+  link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css")
+  style.
+    :root {
+      --bg: #0f0f10;
+      --card: #161617;
+      --muted: #bfbcbc;
+      --accent: #FFD700;
+      --border: rgba(230,201,74,0.18);
+      --radius: 16px;
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    body {
+      background: linear-gradient(180deg, #0b0b0b 0%, #121212 100%);
+      color: #eaeaea;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 36px;
+      padding: 36px;
+    }
+
+    .about-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+      gap: 28px;
+    }
+
+    .avatar {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 4px solid rgba(230,201,74,0.3);
+      background: linear-gradient(135deg, #202020, #111111);
+      flex-shrink: 0;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .avatar:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 40px rgba(255, 215, 0, 0.6);
+    }
+
+    .about-content {
+      flex: 1;
+    }
+
+    .about-heading {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+
+    .about-heading h2 {
+      font-size: 22px;
+      margin: 0;
+    }
+
+    .divider {
+      height: 2px;
+      flex: 1;
+      background: linear-gradient(90deg, transparent, var(--accent));
+      border-radius: 2px;
+    }
+
+    .about-text {
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    .about-text strong {
+      display: block;
+      font-size: 18px;
+      margin-top: 5px;
+      color: var(--accent);
+    }
+
+    .skills-wrap {
+      padding: 22px;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border: 1px solid var(--border);
+    }
+
+    .skills-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .skills-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #f6f4ec;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 10px;
+    }
+
+    .tab-btn {
+      padding: 8px 12px;
+      border-radius: 8px;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.03);
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 13px;
+      transition: all 0.3s ease;
+    }
+
+    .tab-btn.active {
+      background: linear-gradient(180deg, rgba(230,201,74,0.09), rgba(230,201,74,0.04));
+      border: 1px solid var(--accent);
+      color: #fff;
+      box-shadow: 0 3px 10px rgba(230,201,74,0.06);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: 8px;
+    }
+
+    .skill-card {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      padding: 14px;
+      border-radius: 8px;
+      border: 1px solid rgba(230,201,74,0.12);
+      background: rgba(255,255,255,0.02);
+      min-height: 68px;
+      transition: transform .14s ease, box-shadow .14s ease;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 26px rgba(0,0,0,0.6);
+    }
+
+    .skill-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      background: rgba(255,255,255,0.02);
+    }
+
+    .skill-name {
+      font-weight: 600;
+      color: #fff;
+      font-size: 15px;
+    }
+
+    .skill-sub {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    @media (max-width: 920px) {
+      .about-card { flex-direction: column; text-align: center; }
+      .avatar { margin: 0 auto; }
+      .skills-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media (max-width: 600px) {
+      .container { padding: 18px; }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .avatar { width: 140px; height: 140px; }
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+block content
+  .container
+    .about-card
+      .about-content
+        .about-heading
+          h2 About Me
+          .divider
+        p.about-text
+          | Hi everyone! My name is
+          strong Nguyễn Quốc Việt
+          | I am a fourth-year student and a web developer passionate about building reliable, user-friendly applications. I specialize in back-end development and enjoy learning new technologies while improving code quality through testing and best practices
+          strong Education | Oct 2022 - Present
+          | University of Transport Technology | GPA: 3.6 | Scholarship for Excellent Academic Performance (2025)
+      .avatar
+        img(src="/images/blogcanhan.jpg" alt="Avatar")
+    section.skills-wrap
+      .skills-header
+        div
+          .skills-title Skills
+          .muted(style="margin-top:6px;") Tech Stack & Tools I use
+        .tabs
+          button.tab-btn.active(data-tab="tech") Tech Stack
+          button.tab-btn(data-tab="tools") Tools
+      #tech.skills-grid
+        .skill-card
+          .skill-icon(style="color:#E34F26;")
+            i.fa-brands.fa-html5
+          div
+            .skill-name HTML
+            .skill-sub Semantic markup
+        .skill-card
+          .skill-icon(style="color:#1572B6;")
+            i.fa-brands.fa-css3-alt
+          div
+            .skill-name CSS
+            .skill-sub Responsive & Flexbox
+        .skill-card
+          .skill-icon(style="color:#F7DF1E;")
+            i.fa-brands.fa-js
+          div
+            .skill-name JavaScript
+            .skill-sub ES6+, DOM, async
+        .skill-card
+          .skill-icon(style="color:#7952B3;")
+            i.fa-brands.fa-bootstrap
+          div
+            .skill-name Bootstrap
+            .skill-sub Rapid UI prototyping
+        .skill-card
+          .skill-icon(style="color:#68A063;")
+            i.fa-brands.fa-node-js
+          div
+            .skill-name Node.js
+            .skill-sub Express, API servers
+        .skill-card
+          .skill-icon(style="color:#FF6C37;")
+            i.fa-solid.fa-vial
+          div
+            .skill-name Postman
+            .skill-sub API testing & Collections
+      #tools.skills-grid(style="display:none;")
+        .skill-card
+          .skill-icon(style="color:#F1502F;")
+            i.fa-solid.fa-terminal
+          div
+            .skill-name Git
+            .skill-sub Version control
+        .skill-card
+          .skill-icon(style="color:#00758F;")
+            i.fa-solid.fa-database
+          div
+            .skill-name MySQL / MongoDB
+            .skill-sub Database basics
+        .skill-card
+          .skill-icon(style="color:#FFD700;")
+            i.fa-solid.fa-server
+          div
+            .skill-name REST API
+            .skill-sub Design & Testing
+  script.
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const tab = btn.dataset.tab;
+        document.querySelectorAll('.tab-btn').forEach(b => {
+          b.classList.toggle('active', b === btn);
+        });
+        document.getElementById('tech').style.display = (tab === 'tech') ? 'grid' : 'none';
+        document.getElementById('tools').style.display = (tab === 'tools') ? 'grid' : 'none';
+      });
+    });
